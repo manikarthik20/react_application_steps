@@ -1,0 +1,57 @@
+ReactJs + Firebase Application Development Steps
+------------------------------------------------
+step1:open the following url
+https://firebase.google.com/
+
+
+step2:sigin in to your firebase by using your gmail id
+
+
+step3:click getstarted
+
+
+step4:click add project -->provide project name(demo) --> click continue ->click continue
+
+
+step5:Choose or create a Google Analytics account (default)-->click create project
+
+
+-->click continue
+
+
+step6:click web app(</>)-->give your app name(demoapp)-->click register app button
+
+
+step7:after creating or while creating use the following command for installing firebase database
+
+
+npm install firebase
+
+
+step8:in your react project create firebase-config.js file and add the firebase database configuration
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+apiKey: "XXXXXX",
+authDomain: "fir-XXX.firebaseapp.com",
+projectId: "fir-XXXX",
+storageBucket: "fir-XXX.appspot.com",
+messagingSenderId: "XXXXXXXXX",
+appId: "1:XXXXX:web:42bd1c97ab3e6741d7337b",
+measurementId: "G-YD322XRMR1"
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+Note:no need to change after generated firebase configuration. just you need to copy paste in to your firebase-config.js file.

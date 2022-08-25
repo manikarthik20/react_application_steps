@@ -1,0 +1,195 @@
+React + Datatable Integration Application Steps
+------------------------------------------------
+Step1:Create a new react js project
+>npx create-react-app <project-name>
+ex:npx create-react-app my-datatable
+
+
+
+Step2:switch to project location
+
+
+
+>cd my-datatable
+
+
+
+step3:open the project in to your vscode
+
+
+
+my-datatable>code .
+
+
+
+step4:install bootstrap and axios library
+
+
+
+npm install bootstrap --save
+
+
+
+npm install axios --save
+
+
+
+step5:add bootstrap link in to your App.js file
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
+
+step6:Install jQuey and DataTable Library
+npm install --save datatables.net-dt
+
+
+
+npm install jquery --save
+
+
+
+step7:create db folder inside create db.json file
+
+
+
+{
+"products": [
+{
+"id": 1,
+"pname": "abc",
+"qty": 10,
+"price": 100
+},
+{
+"id": 2,
+"pname": "pqr",
+"qty": 10,
+"price": 100
+},
+{
+"id": 3,
+"pname": "xyz",
+"qty": 10,
+"price": 100
+}
+]
+}
+
+
+
+step8:switch to db location and give json-server command
+
+
+
+json-server --watch db.json
+
+
+
+step9:create ListComponent in your component folder
+
+
+
+import React from 'react';
+
+import './App.css';
+
+//jQuery libraries
+
+import 'jquery/dist/jquery.min.js';
+
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables"
+import "datatables.net-dt/css/jquery.dataTables.min.css"
+import $ from 'jquery';
+
+//For API Requests
+import axios from 'axios';
+
+class ListComponent extends Component {
+
+// State array variable to save and show data
+constructor(props) {
+super(props)
+this.state = {
+data: [],
+
+}}
+componentDidMount() {
+//Get all users details in bootstrap table
+axios.get('http://localhost/getList.php').then(res =>
+{
+//Storing users detail in state array object
+this.setState({data: res.data});
+
+});
+//initialize datatable
+$(document).ready(function () {
+setTimeout(function(){
+$('#example').DataTable();
+} ,1000);
+});
+}
+render(){
+//Datatable HTML
+return (
+<div className="MainDiv">
+<div class="jumbotron text-center">
+<h3>LaraTutorials.com</h3>
+</div>
+
+<div className="container">
+
+<table id="example" class="table table-hover table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>Email</th>
+<th>Username</th>
+</tr>
+</thead>
+<tbody>
+{this.state.data.map((result) => {
+return (
+
+<tr>
+<td>{result.id}</td>
+<td>{result.pname}</td>
+<td>{result.qty}</td>
+<td>{result.price}</td>
+</tr>
+
+)
+})}
+
+
+</tbody>
+</table>
+
+</div>
+</div>
+);
+}
+}
+export default ListComponent;
+
+
+
+step10:import ListComponent in to your App component
+import React from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import ListComponent from './ListComponent'
+
+function App() {
+
+return (
+<div className="App">
+<ListComponent/>
+</div>
+);
+}
+
+export default App;
+
+
+
+step11:run the application

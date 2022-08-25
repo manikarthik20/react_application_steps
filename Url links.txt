@@ -1,0 +1,21 @@
+Reactjs Crud :- https://therichpost.com/reactjs-crud-add-view-edit-delete-tutorial/
+
+
+payment Integration With Spring Boot :- https://www.pixeltrice.com/payment-integration-with-paytm-in-spring-boot-application/
+
+
+React Strip payment System :- https://blog.logrocket.com/react-stripe-payment-system-tutorial/
+
+Google pay intigration in raect :- https://www.pluralsight.com/guides/how-to-integrate-googlepay-in-react
+
+
+Redux OverView :- https://redux.js.org/tutorials/fundamentals/part-1-overview
+
+React Notes :- https://books.goalkicker.com/ReactJSBook/
+
+
+firebase in React :- https://www.djamware.com/post/5bc50ea680aca7466989441d/reactjs-firebase-tutorial-building-firestore-crud-web-application
+
+To Creat Charts In react :- https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react
+
+How To creat React-router :- https://www.freecodecamp.org/news/how-to-use-react-router-version-6/

@@ -1,0 +1,89 @@
+CRUD Operations in Reactjs Data Inserted in JSON File:-
+
+
+AddProduct.js:-
+----------
+import axios from "axios";
+//import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import React, { useState } from "react";
+//import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+const AddProduct = () => {
+
+    const [user, setUser] = useState({
+        product_name: "",
+        product_price: "",
+        product_description: ""
+    });
+
+    const { product_name, product_price, product_description } = user;
+
+    const onInputChange = e => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+    }
+
+    const onSubmit = async e => {
+        e.preventDefault();
+        await axios.post("http://localhost:3000/products", user);
+        alert("Data Inserted");
+    };
+
+
+
+
+    return (
+        <div className="container bg-light ">
+            <div class="row">
+                <div className="col sm-4 mx-auto shadow p-5">
+                    <h2 className="text-center mb-4">Add Product</h2>
+                    <form onSubmit={e => onSubmit(e)}>
+                        <div className="form-group">
+                            <input type="text" className="form-control form-control-lg" name="product_name"
+                                value={product_name}
+                                onChange={e => onInputChange(e)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input type="text" className="form-control form-control-lg" name="product_price"
+                                value={product_price}
+                                onChange={e => onInputChange(e)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="form-control form-control-lg"
+                                name="product_description"
+                                value={product_description}
+                                onChange={e => onInputChange(e)}
+                            />
+                        </div>
+                        <button className="btn btn-primary btn-block">Add Product</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    )
+}
+export default AddProduct;
+
+App.js:-
+-------
+
+import './App.css';
+import AddProduct from './components/AddProduct';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>App.js</h1>
+      <p>Added</p>
+      <AddProduct/>
+    </div>
+  );
+}
+
+export default App;

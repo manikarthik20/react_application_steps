@@ -1,0 +1,1020 @@
+SQL Assignment
+
+1. Create the table PROGRAMMER with the given information using SQL CREATE TABLE commands:
+
+mysql> create database dbs;
+Query OK, 1 row affected (0.22 sec)
+
+mysql> use dbs;
+Database changed
+mysql> show tables;
+Empty set (0.07 sec)
+
+mysql> create table emp(empno int(30),firstname varchar(30),lastname varchar(30),hire DATE,projid int(10),lang varchar(30),task int(10),privilegde varchar(30));
+Query OK, 0 rows affected, 3 warnings (1.98 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_dbs |
++---------------+
+| emp           |
++---------------+
+1 row in set (0.06 sec)
+
+mysql> describe emp;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| empno      | int         | YES  |     | NULL    |       |
+| firstname  | varchar(30) | YES  |     | NULL    |       |
+| lastname   | varchar(30) | YES  |     | NULL    |       |
+| hire       | date        | YES  |     | NULL    |       |
+| projid     | int         | YES  |     | NULL    |       |
+| lang       | varchar(30) | YES  |     | NULL    |       |
+| task       | int         | YES  |     | NULL    |       |
+| privilegde | varchar(30) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+8 rows in set (0.06 sec)
+
+mysql> insert into emp values(101,'Naveen','Madaboyina','2022-01-03',123,'Java',10,'Secret');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde |
++-------+-----------+------------+------------+--------+------+------+------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret     |
++-------+-----------+------------+------------+--------+------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp values(102,'Rajesh','Bhattu','2022-01-05',124,'Java',11,'TopSecret');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into emp values(103,'Anusha','jagary','2022-01-0',125,'Java',13,'Secret');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into emp values(104,'Nagaraj','Madikanti','2021-12-22',126,'Java',15,'Confidential');
+Query OK, 1 row affected (0.10 sec)
+#-------------------------------------------------------------------------------------------------------------
+
+2. Insert the following data into the PROGRAMMER table 
+
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+--------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde   |
++-------+-----------+------------+------------+--------+------+------+--------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret       |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java |   11 | TopSecret    |
+|   103 | Anusha    | jagary     | 2022-01-00 |    125 | Java |   13 | Secret       |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java |   15 | Confidential |
++-------+-----------+------------+------------+--------+------+------+--------------+
+4 rows in set (0.01 sec)
+
+#--------------------------------------------------------------------------------------------------------------------------------------------
+3-Write SQL queries to:
+
+
+a. Saurav Gupta is assigned a different project with id NITTS and he would work with C++ now. Update
+this change in the PROGRAMMER table.
+
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+--------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde   |
++-------+-----------+------------+------------+--------+------+------+--------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret       |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java |   11 | TopSecret    |
+|   103 | Anusha    | jagary     | 2022-01-00 |    125 | Java |   13 | Secret       |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java |   15 | Confidential |
++-------+-----------+------------+------------+--------+------+------+--------------+
+4 rows in set (0.01 sec)
+
+mysql> update emp set firstname='John' where empno=103;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+--------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde   |
++-------+-----------+------------+------------+--------+------+------+--------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret       |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java |   11 | TopSecret    |
+|   103 | John      | jagary     | 2022-01-00 |    125 | Java |   13 | Secret       |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java |   15 | Confidential |
++-------+-----------+------------+------------+--------+------+------+--------------+
+4 rows in set (0.04 sec)
+
+b.Supriyo Chaudhury has resigned his job. Incorporate this in the table PROGRAMMER.
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+-----------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde      |
++-------+-----------+------------+------------+--------+------+------+-----------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret          |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java |   11 | TopSecret       |
+|   103 | John      | jagary     | 2022-01-00 |    125 | Java |   13 | Secret          |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java |   15 | Confidential    |
+|   105 | Mahesh    | Middala    | 2021-12-15 |    127 | HTML |   16 | Confidential    |
+|   106 | Durga     | Prasad     | 2021-11-15 |    128 | CSS  |   17 | TopConfidential |
+|   107 | Kumar     | Goud       | 2021-11-01 |    129 | Unix |   17 | TopSecret       |
++-------+-----------+------------+------------+--------+------+------+-----------------+
+7 rows in set (0.00 sec)
+
+mysql> delete from emp where empno=107;
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+-----------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde      |
++-------+-----------+------------+------------+--------+------+------+-----------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret          |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java |   11 | TopSecret       |
+|   103 | John      | jagary     | 2022-01-00 |    125 | Java |   13 | Secret          |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java |   15 | Confidential    |
+|   105 | Mahesh    | Middala    | 2021-12-15 |    127 | HTML |   16 | Confidential    |
+|   106 | Durga     | Prasad     | 2021-11-15 |    128 | CSS  |   17 | TopConfidential |
++-------+-----------+------------+------------+--------+------+------+-----------------+
+
+c. The column TaskNo in the PROGRAMMER table is no longer needed. Delete the column. 
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+------+-----------------+
+| empno | firstname | lastname   | hire       | projid | lang | task | privilegde      |
++-------+-----------+------------+------------+--------+------+------+-----------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java |   10 | Secret          |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java |   11 | TopSecret       |
+|   103 | Anusha    | jagary     | 2022-01-00 |    125 | Java |   13 | Secret          |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java |   15 | Confidential    |
+|   105 | Mahesh    | Middala    | 2021-12-15 |    127 | HTML |   16 | Confidential    |
+|   106 | Durga     | Prasad     | 2021-11-15 |    128 | CSS  |   17 | TopConfidential |
++-------+-----------+------------+------------+--------+------+------+-----------------+
+6 rows in set (0.04 sec)
+
+mysql> alter table emp
+    -> drop column task;
+Query OK, 0 rows affected (3.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+------------+------------+--------+------+-----------------+
+| empno | firstname | lastname   | hire       | projid | lang | privilegde      |
++-------+-----------+------------+------------+--------+------+-----------------+
+|   101 | Naveen    | Madaboyina | 2022-01-03 |    123 | Java | Secret          |
+|   102 | Rajesh    | Bhattu     | 2022-01-05 |    124 | Java | TopSecret       |
+|   103 | Anusha    | jagary     | 2022-01-00 |    125 | Java | Secret          |
+|   104 | Nagaraj   | Madikanti  | 2021-12-22 |    126 | Java | Confidential    |
+|   105 | Mahesh    | Middala    | 2021-12-15 |    127 | HTML | Confidential    |
+|   106 | Durga     | Prasad     | 2021-11-15 |    128 | CSS  | TopConfidential |
++-------+-----------+------------+------------+--------+------+-----------------+
+6 rows in set (0.00 sec)
+
+#------------------------------------------------------------------------------------------
+4. Create table Department 
+
+mysql> create table department(deptno int(10),deptname varchar(30),loc varchar(30));
+Query OK, 0 rows affected, 1 warning (0.38 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_dbs |
++---------------+
+| department    |
+| emp           |
++---------------+
+2 rows in set (0.06 sec)
+
+mysql> describe department;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptno   | int         | YES  |     | NULL    |       |
+| deptname | varchar(30) | YES  |     | NULL    |       |
+| loc      | varchar(30) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+
+
+6. Insert the following data into the Department table
+
+mysql> insert into department values(100,'Development','USA'),(200,'Testing','India'),
+(300,'Accounts','Hyderabad'),(400,'Sales','Vizag'),(500,'Research','Newyork');
+Query OK, 5 rows affected (0.20 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++--------+-------------+-----------+
+| deptno | deptname    | loc       |
++--------+-------------+-----------+
+|    100 | Development | USA       |
+|    200 | Testing     | India     |
+|    300 | Accounts    | Hyderabad |
+|    400 | Sales       | Vizag     |
+|    500 | Research    | Newyork   |
++--------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+#-------------------------------------------------------------------------------------------------------------
+Create table Employee
+
+
+mysql> create table employee(empno int(10),ename varchar(30),job varchar(30),sal int(50),hire DATE,deptno int(30));
+Query OK, 0 rows affected, 3 warnings (1.81 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_dbs |
++---------------+
+| department    |
+| emp           |
+| employee      |
++---------------+
+3 rows in set (0.05 sec)
+
+mysql> describe employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empno  | int         | YES  |     | NULL    |       |
+| ename  | varchar(30) | YES  |     | NULL    |       |
+| job    | varchar(30) | YES  |     | NULL    |       |
+| sal    | int         | YES  |     | NULL    |       |
+| hire   | date        | YES  |     | NULL    |       |
+| deptno | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.05 sec)
+
+mysql> insert into employee values(7001,'james','clerk',3000,'2005-5-6',10),
+    -> (7002,'Manson','President',10000,'2005-6-6',20),
+    -> (7003,'Clark','Manager',5000,'2005-5-6',30),
+    -> (7004,'John','Manger',6000,'2005-8-6',40),
+    -> (7001,'Blake','clerk',3500,'2005-9-6',50);
+Query OK, 5 rows affected (0.12 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3000 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  3500 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.00 sec)
+
+#-------------------------------------------------------------------------------------------------
+10. Create table Grade
+
+mysql> create table grade(Gradeno int(30),Hi_sal int(30),Lo_sal int(30));
+Query OK, 0 rows affected, 3 warnings (1.55 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_dbs |
++---------------+
+| department    |
+| emp           |
+| employee      |
+| grade         |
++---------------+
+4 rows in set (0.03 sec)
+
+mysql> describe grade;
++---------+------+------+-----+---------+-------+
+| Field   | Type | Null | Key | Default | Extra |
++---------+------+------+-----+---------+-------+
+| Gradeno | int  | YES  |     | NULL    |       |
+| Hi_sal  | int  | YES  |     | NULL    |       |
+| Lo_sal  | int  | YES  |     | NULL    |       |
++---------+------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+11.Drop the column Lo_sal from Grade Table
+
+
+mysql> alter table grade
+    -> drop column Lo_sal;
+Query OK, 0 rows affected (1.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe grade;
++---------+------+------+-----+---------+-------+
+| Field   | Type | Null | Key | Default | Extra |
++---------+------+------+-----+---------+-------+
+| Gradeno | int  | YES  |     | NULL    |       |
+| Hi_sal  | int  | YES  |     | NULL    |       |
++---------+------+------+-----+---------+-------+
+2 rows in set (0.04 sec)
+
+12.Add column Low_sal in Grade table
+
+mysql> alter table grade
+    -> add Low_sal int(30);
+Query OK, 0 rows affected, 1 warning (0.55 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> describe grade;
++---------+------+------+-----+---------+-------+
+| Field   | Type | Null | Key | Default | Extra |
++---------+------+------+-----+---------+-------+
+| Gradeno | int  | YES  |     | NULL    |       |
+| Hi_sal  | int  | YES  |     | NULL    |       |
+| Low_sal | int  | YES  |     | NULL    |       |
++---------+------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+
+13.Insert the following data into the table 
+
+mysql> insert into grade values(101,2000,500),(102,3500,2100),(103,6000,3600),(104,15000,6100);
+Query OK, 4 rows affected (0.13 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from grade;
++---------+--------+---------+
+| Gradeno | Hi_sal | Low_sal |
++---------+--------+---------+
+|     101 |   2000 |     500 |
+|     102 |   3500 |    2100 |
+|     103 |   6000 |    3600 |
+|     104 |  15000 |    6100 |
++---------+--------+---------+
+4 rows in set (0.00 sec)
+
+#------------------------------------------------------------------------------------------------------------------
+14 Create table EMPLOYEE_BACK from employee table
+
+mysql> create table employee_back like employee;
+Query OK, 0 rows affected (1.59 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_dbs |
++---------------+
+| department    |
+| emp           |
+| employee      |
+| employee_back |
+| grade         |
++---------------+
+5 rows in set (0.05 sec)
+
+mysql> describe employee_back;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empno  | int         | YES  |     | NULL    |       |
+| ename  | varchar(30) | YES  |     | NULL    |       |
+| job    | varchar(30) | YES  |     | NULL    |       |
+| sal    | int         | YES  |     | NULL    |       |
+| hire   | date        | YES  |     | NULL    |       |
+| deptno | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.07 sec)
+#-------------------------------------------------------------------------------------------------
+15 Increase the salary of JAMES from 3000 to 3500 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3000 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  3500 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.04 sec)
+
+mysql> update employee set sal=sal+500 where empno=7001;
+Query OK, 2 rows affected (0.13 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3500 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+#------------------------------------------------------------------------------------------------------
+16.Increase the salary of all MANAGER by 1000
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3500 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  6000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.02 sec)
+
+mysql> update employee set sal=sal+1000 where job='Manager';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3500 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update employee set sal=sal+1000 where job='Manger';
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3500 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.09 sec)
+#-------------------------------------------------------------------------------------------
+
+17.Decrease the salary of DEPTNO 10 by 100
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3500 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.09 sec)
+
+mysql> update employee set sal=sal-100 where deptno=10;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+
+| empno | ename  | job       | sal   | hire       | deptno |
++-------+--------+-----------+-------+------------+--------+
+|  7001 | james  | clerk     |  3400 | 2005-05-06 |     10 |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 |
++-------+--------+-----------+-------+------------+--------+
+5 rows in set (0.03 sec)
+
+#----------------------------------------------------------------------------------------------------
+
+18.Add a new field COMM in EMPLOYEE table
+
+
+mysql> describe employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empno  | int         | YES  |     | NULL    |       |
+| ename  | varchar(30) | YES  |     | NULL    |       |
+| job    | varchar(30) | YES  |     | NULL    |       |
+| sal    | int         | YES  |     | NULL    |       |
+| hire   | date        | YES  |     | NULL    |       |
+| deptno | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.09 sec)
+
+mysql> alter table employee
+    -> add Comm varchar(30);
+Query OK, 0 rows affected (1.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empno  | int         | YES  |     | NULL    |       |
+| ename  | varchar(30) | YES  |     | NULL    |       |
+| job    | varchar(30) | YES  |     | NULL    |       |
+| sal    | int         | YES  |     | NULL    |       |
+| hire   | date        | YES  |     | NULL    |       |
+| deptno | int         | YES  |     | NULL    |       |
+| Comm   | varchar(30) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+#==========================================================================================================================
+19.Initialize the value of COMM to zero in EMPLOYEE table.
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7001 | james  | clerk     |  3400 | 2005-05-06 |     10 | NULL |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | NULL |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 | NULL |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 | NULL |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 | NULL |
++-------+--------+-----------+-------+------------+--------+------+
+5 rows in set (0.04 sec)
+
+mysql> insert into employee values(7005,'Ajay','Manager',5000,'2005-06-05',60,0);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7001 | james  | clerk     |  3400 | 2005-05-06 |     10 | NULL |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | NULL |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 | NULL |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 | NULL |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 | NULL |
+|  7005 | Ajay   | Manager   |  5000 | 2005-06-05 |     60 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+6 rows in set (0.00 sec)
+#======================================================================================================
+20.Remove the employees who have joined before 6-Jun-2005 
+
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7001 | james  | clerk     |  3400 | 2005-05-06 |     10 | NULL |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | NULL |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 | NULL |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 | NULL |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 | NULL |
+|  7005 | Ajay   | Manager   |  5000 | 2005-06-05 |     60 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+6 rows in set (0.00 sec)
+
+mysql> delete from employee where hire='2005-06-05';
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7001 | james  | clerk     |  3400 | 2005-05-06 |     10 | NULL |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | NULL |
+|  7003 | Clark  | Manager   |  7000 | 2005-05-06 |     30 | NULL |
+|  7004 | John   | Manger    |  7000 | 2005-08-06 |     40 | NULL |
+|  7001 | Blake  | clerk     |  4000 | 2005-09-06 |     50 | NULL |
++-------+--------+-----------+-------+------------+--------+------+
+5 rows in set (0.00 sec)
+
+#=======================================================================================================
+
+21.Remove employees whose salary is less than 3000 
+
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7001 | james  | clerk     |  2600 | 2005-05-06 |     10 | NULL |
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> delete from employee where sal<3000;
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+4 rows in set (0.04 sec)
+
+#=========================================================================================
+
+22.List all employees who are working in department 10. 
+
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |     10 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+5 rows in set (0.04 sec)
+
+mysql> select * from employee where deptno=10;
++-------+-------+-------+------+------------+--------+------+
+| empno | ename | job   | sal  | hire       | deptno | Comm |
++-------+-------+-------+------+------------+--------+------+
+|  7006 | vijay | clerk | 3500 | 2005-09-06 |     10 | 0    |
++-------+-------+-------+------+------------+--------+------+
+1 row in set (0.00 sec)
+
+
+#----------------------------------------------------------------------------------------------
+23.List all employees of department 10 and are MANAGER 
+
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |     10 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee where ename='Manager';
+Empty set (0.00 sec)
+
+mysql> select * from employee where deptno=10;
++-------+-------+-------+------+------------+--------+------+
+| empno | ename | job   | sal  | hire       | deptno | Comm |
++-------+-------+-------+------+------------+--------+------+
+|  7006 | vijay | clerk | 3500 | 2005-09-06 |     10 | 0    |
++-------+-------+-------+------+------------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where job='Manager';
++-------+-------+---------+------+------------+--------+------+
+| empno | ename | job     | sal  | hire       | deptno | Comm |
++-------+-------+---------+------+------------+--------+------+
+|  7003 | Clark | Manager | 5000 | 2005-05-06 |     30 | 0    |
++-------+-------+---------+------+------------+--------+------+
+
+#=======================================================================================
+24.List all employees whose salary is between 3000 and 5000 
+
+mysql> select * from employee where sal=5000 and 3500;
++-------+-------+---------+------+------------+--------+------+
+| empno | ename | job     | sal  | hire       | deptno | Comm |
++-------+-------+---------+------+------------+--------+------+
+|  7003 | Clark | Manager | 5000 | 2005-05-06 |     30 | 0    |
++-------+-------+---------+------+------------+--------+------+
+1 row in set (0.00 sec)
+
+#========================================================================================
+25. List all employees who have joined after 10th July 2005 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |     10 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+6 rows in set (0.04 sec)
+
+mysql> select * from employee where hire='2005-06-20';
++-------+-------+-------+------+------------+--------+------+
+| empno | ename | job   | sal  | hire       | deptno | Comm |
++-------+-------+-------+------+------------+--------+------+
+|  7007 | Lucky | clerk | 3500 | 2005-06-20 |     10 | 0    |
++-------+-------+-------+------+------------+--------+------+
+1 row in set (0.00 sec)
+
+#=======================================================================================
+26.List all employees who are MANAGER or PRESIDENT 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |     10 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+6 rows in set (0.04 sec)
+
+mysql> select * from employee where ename='Manson';
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+1 row in set (0.00 sec)
+
+#===================================================================================================
+
+27.List all employees who are in deptno 10 or 20 and who are MANAGERS 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |     10 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+6 rows in set (0.04 sec)
+
+mysql> select * from employee where deptno=10 and 20;
++-------+-------+-------+------+------------+--------+------+
+| empno | ename | job   | sal  | hire       | deptno | Comm |
++-------+-------+-------+------+------------+--------+------+
+|  7006 | vijay | clerk | 3500 | 2005-09-06 |     10 | 0    |
+|  7007 | Lucky | clerk | 3500 | 2005-06-20 |     10 | 0    |
++-------+-------+-------+------+------------+--------+------+
+2 rows in set (0.00 sec)
+
+#================================================================================================
+28.Update the commission of employees in deptno 10 to 500. 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |     10 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+6 rows in set (0.04 sec)
+mysql> update employee set deptno=deptno+490 where deptno=10;
+Query OK, 2 rows affected (0.10 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
++-------+--------+-----------+-------+------------+--------+------+
+
+#==============================================================================================
+29.List all employees whose commission is null. 
+
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
++-------+--------+-----------+-------+------------+--------+------+
+7 rows in set (0.01 sec)
+
+
+mysql> select * from employee where Comm='null';
++-------+-------+-------+------+------------+--------+------+
+| empno | ename | job   | sal  | hire       | deptno | Comm |
++-------+-------+-------+------+------------+--------+------+
+|  7007 | Lucky | clerk | 3500 | 2005-06-20 |     10 | null |
++-------+-------+-------+------+------------+--------+------+
+1 row in set (0.00 sec)
+#==============================================================================================
+30.List the employees who are not a PRESIDENT or MANAGER 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
++-------+--------+-----------+-------+------------+--------+------+
+7 rows in set (0.01 sec)
+
+mysql> select * from employee where not job='President';
++-------+-------+---------+------+------------+--------+------+
+| empno | ename | job     | sal  | hire       | deptno | Comm |
++-------+-------+---------+------+------------+--------+------+
+|  7003 | Clark | Manager | 5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John  | Manger  | 6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake | clerk   | 3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay | clerk   | 3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky | clerk   | 3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky | clerk   | 3500 | 2005-06-20 |     10 | null |
++-------+-------+---------+------+------------+--------+------+
+6 rows in set (0.01 sec)
+
+#===========================================================================================
+31.List all employees whose name begin with J
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
++-------+--------+-----------+-------+------------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee where ename like 'j%';
++-------+-------+--------+------+------------+--------+------+
+| empno | ename | job    | sal  | hire       | deptno | Comm |
++-------+-------+--------+------+------------+--------+------+
+|  7004 | John  | Manger | 6000 | 2005-08-06 |     40 | 0    |
++-------+-------+--------+------+------------+--------+------+
+1 row in set (0.03 sec) 
+
+#===========================================================================================
+ 
+32.List all employees whose name consists of A 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
+|  7008 | Ajay   | Manager   |  4000 | 2005-06-25 |     10 | 20   |
++-------+--------+-----------+-------+------------+--------+------+
+8 rows in set (0.03 sec)
+
+mysql> select * from employee where ename like 'A%';
++-------+-------+---------+------+------------+--------+------+
+| empno | ename | job     | sal  | hire       | deptno | Comm |
++-------+-------+---------+------+------------+--------+------+
+|  7008 | Ajay  | Manager | 4000 | 2005-06-25 |     10 | 20   |
++-------+-------+---------+------+------------+--------+------+
+1 row in set (0.00 sec)
+#============================================================================================
+33.List the employee sal, comm. and bonus (Bonus is sal+comm.) 
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
+|  7008 | Ajay   | Manager   |  4000 | 2005-06-25 |     10 | 20   |
++-------+--------+-----------+-------+------------+--------+------+
+8 rows in set (0.00 sec)
+
+mysql> select ename,sal+Comm from employee;
++--------+----------+
+| ename  | sal+Comm |
++--------+----------+
+| Manson |    10000 |
+| Clark  |     5000 |
+| John   |     6000 |
+| Blake  |     3500 |
+| vijay  |     3500 |
+| Lucky  |     3500 |
+| Lucky  |     3500 |
+| Ajay   |     4020 |
++--------+----------+
+
+#====================================================================================================
+34.Display the salary of employees of MANAGER increased by 10%. The output should display salary and
+increased salary.
+ 
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   |  5000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
+|  7008 | Ajay   | Manager   |  4000 | 2005-06-25 |     10 | 20   |
++-------+--------+-----------+-------+------------+--------+------+
+8 rows in set (0.00 sec)
+
+mysql> update employee set sal=(select sal+(select sal*10)) where job='Manager';
+Query OK, 2 rows affected (0.21 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   | 55000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
+|  7008 | Ajay   | Manager   | 44000 | 2005-06-25 |     10 | 20   |
++-------+--------+-----------+-------+------------+--------+------+
+#-=============================================================================================
+
+35.Update the salary of MANAGER by 10%. 
+
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   | 55000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |  6000 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
+|  7008 | Ajay   | Manager   | 44000 | 2005-06-25 |     10 | 20   |
++-------+--------+-----------+-------+------------+--------+------+
+8 rows in set (0.04 sec)
+
+mysql> update employee set sal=sal/100*10 where job='Manger';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-------+--------+-----------+-------+------------+--------+------+
+| empno | ename  | job       | sal   | hire       | deptno | Comm |
++-------+--------+-----------+-------+------------+--------+------+
+|  7002 | Manson | President | 10000 | 2005-06-06 |     20 | 0    |
+|  7003 | Clark  | Manager   | 55000 | 2005-05-06 |     30 | 0    |
+|  7004 | John   | Manger    |   600 | 2005-08-06 |     40 | 0    |
+|  7005 | Blake  | clerk     |  3500 | 2005-09-06 |     50 | 0    |
+|  7006 | vijay  | clerk     |  3500 | 2005-09-06 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |    500 | 0    |
+|  7007 | Lucky  | clerk     |  3500 | 2005-06-20 |     10 | null |
+|  7008 | Ajay   | Manager   | 44000 | 2005-06-25 |     10 | 20   |
++-------+--------+-----------+-------+------------+--------+------+
+8 rows in set (0.03 sec)
+
+#====================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

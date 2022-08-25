@@ -1,0 +1,40 @@
+State Lifiting Up Example
+==========================
+step1:Create a new react js project>npx create-react-app liftingupstep
+2:switiching in to project location>cd liftingup
+step3:open the code in to vscode editorliftingup>code .
+step4:create four Components.They are1. OrderInfoComponent (Child Component)
+class OrderInfoComponent extends React.Component {
+//here you have implement
+}2. Address Component(Child Component)
+class AddressComponent extends React.Component {
+//here you have implement
+}
+3. Summary Component(Child Component)
+class SummaryComponent extends React.Component {
+//here you have implement
+}
+4.OrderComponent
+import React, { Component } from "react";export class OrderComponent extends Component {
+constructor(props) {
+super(props); this.state = {
+quantity: "",
+address: "",
+};
+}
+orderInfoChanged = (val) => {
+this.setState({ quantity: val });
+}; addressChanged = (val) => {
+this.setState({ address: val });
+};
+render() {
+return <div> <h1>Welcome to Product Order Screen...</h1> <OrderInfoComponent quantity={this.state.quantity} onQuantityChange={this.orderInfoChanged}></OrderInfoComponent> <AddressComponent address={this.state.address} onAddressChange={this.addressChanged}></AddressComponent> <SummaryComponent quantity={this.state.quantity} address={this.state.address} onQuantityChange={this.orderInfoChanged}></SummaryComponent> </div>;
+}
+}
+
+
+
+
+https://chandra-statelift.herokuapp.com/
+React App
+Web site created using create-react-app
